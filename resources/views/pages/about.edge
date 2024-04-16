@@ -1,0 +1,42 @@
+@layouts.main()
+@slot('title')
+About Page
+@endslot
+
+@slot('body')
+<div class="pb-6">
+  <img src="{{asset('/resources/images/about.png')}}" class="w-auto h-64 rounded mx-auto mb-6" alt="Hero Img">
+  <h1 class="text-3xl font-bold mb-6">
+    Selamat Datang di Halaman About
+  </h1>
+
+  <p class="text-xl font-semibold">Berikut adalah Biodata tentang diri saya :</p>
+
+  <table class="mx-auto mt-8 border-collapse border border-black">
+    <tr>
+      <td class="border border-black px-4 py-2 font-semibold">Nama</td>
+      <td class="border border-black px-4 py-2">Akhyar🪣🪣🪣</td>
+    </tr>
+    <tr>
+      <td class="border border-black px-4 py-2 font-semibold">NPM</td>
+      <td class="border border-black px-4 py-2">2108107010095</td>
+    </tr>
+    <tr>
+      <td class="border border-black px-4 py-2 font-semibold">Alamat</td>
+      <td class="border border-black px-4 py-2"><a href="https://maps.app.goo.gl/dqYrwM6z1XkecjuU7"
+          target="_blank">Ateuk Jawo</a></td>
+    </tr>
+    <tr>
+      <td class="border border-black px-4 py-2 font-semibold">Hobi</td>
+      <td class="border border-black px-4 py-2">Ganggu Fatiyaaa👻👻👻</td>
+    </tr>
+    <tr>
+      <td class="border border-black px-4 py-2 font-semibold">Cita-Cita</td>
+      <td class="border border-black px-4 py-2">Kaya & Masuk Surga</td>
+    </tr>
+  </table>
+
+</div>
+
+@endslot
+@end

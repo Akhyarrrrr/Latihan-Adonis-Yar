@@ -1,0 +1,94 @@
+@layouts.main()
+@slot('title')
+Data Register Page
+@endslot
+
+@slot('body')
+
+@if(flashMessages.has('status'))
+<div class="text-green-800 font-bold">
+  {{flashMessages.get('status')}}
+</div>
+@elseif(flashMessages.has('error'))
+<div class="text-red-800 font-bold">
+  {{flashMessages.get('error')}}
+</div>
+@endif
+
+<div class="mb-6">
+  <h1 class="text-3xl font-semibold mb-4">
+    Yoo! ini adalah halaman Data Register
+  </h1>
+
+  <p class="text-xl">Silahkan Cek data yang kamu inginkan</p>
+</div>
+
+<div class="overflow-x-auto shadow-md sm:rounded-lg mx-16">
+  <table class="w-full text-sm text-left rtl:text-right text-black bg-[#E1F0DA]">
+
+    <thead class="text-md uppercase bg-[#14532d] text-white">
+      <tr>
+        <th scope="col" class="px-6 py-3 w-1/4 text-center">
+          Id
+        </th>
+        <th scope="col" class="px-6 py-3 w-1/4 text-center">
+          Nama
+        </th>
+        <th scope="col" class="px-6 py-3 w-1/4 text-center">
+          Email
+        </th>
+        <th scope="col" class="px-6 py-3 w-1/4 text-center">
+          Action
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @each(item in users)
+
+      <tr class="bg-white border-b hover:bg-gray-50">
+        <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap text-center">
+          {{item.id}}
+        </th>
+        <td class="px-6 py-4 text-center">
+          {{item.fullName}}
+        </td>
+        <td class="px-6 py-4 text-center">
+          {{item.email}}
+        </td>
+        <td class="px-6 py-4 text-center">
+
+          <a href="{{route('user.show', {id: item.id})}}">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded mr-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M4 3a1 1 0 011-1h2.586a1 1 0 01.707.293l8 8a1 1 0 010 1.414l-8 8a1 1 0 01-1.414-1.414L14.586 11H5a1 1 0 01-1-1V4a1 1 0 011-1zm9 0v3h3L10 14.586 5.414 10H9V3h4z"
+                  clip-rule="evenodd" />
+              </svg>
+              Edit
+            </button>
+          </a>
+
+          <form class="mt-5" method="POST"
+            action="{{ route('user.destroy', {id: item.id}, { qs: { _method: 'DELETE' } }) }}">
+            {{csrfField()}}
+            <button class="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M6 3a1 1 0 011-1h6a1 1 0 011 1v1h2a1 1 0 011 1v2a1 1 0 01-1 1h-1v8a1 1 0 01-1 1H8a1 1 0 01-1-1V8H6a1 1 0 01-1-1V4a1 1 0 011-1zm4 2H8v10h2V5zm3 0h-2v10h2V5z"
+                  clip-rule="evenodd" />
+              </svg>
+              Delete
+            </button>
+          </form>
+        </td>
+      </tr>
+      @endeach
+    </tbody>
+  </table>
+</div>
+
+@endslot
+@end

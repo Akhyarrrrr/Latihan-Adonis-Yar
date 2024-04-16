@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> {{{ await $slots.title()}}} </title>
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body class="bg-[#E1F0DA] text-center font-primary">
+  @layouts.header()
+
+  @end
+
+  <body>
+    {{{ await $slots.body() }}}
+  </body>
+
+</body>
+
+</html>

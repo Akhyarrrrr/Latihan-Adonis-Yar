@@ -1,0 +1,45 @@
+<header class="pb-36">
+  <nav class="bg-[#99BC85] fixed w-full z-20 top-0 start-0 border-b border-gray-200">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="{{asset('/resources/images/logoyar.png')}}" class="h-12" alt="Flowbite Logo">
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Tugas 2</span>
+      </div>
+
+      <div class="flex w-auto order-1 justify-center items-center" id="navbar-sticky">
+
+        @if(auth.isAuthenticated)
+
+        <ul class="flex font-medium space-x-8 rtl:space-x-reverse flex-row">
+          <li>
+            <a href="{{route('/home')}}" class="text-white hover:text-[#daffc4]">Home</a>
+          </li>
+          <li>
+            <a href="{{route('/about')}}" class="text-white rounded hover:text-[#daffc4]">About</a>
+          </li>
+          <li>
+            <a href="{{route('/datatable')}}" class="text-white rounded hover:text-[#daffc4]">Data Register</a>
+          </li>
+        </ul>
+        <form action="{{route('/logout')}}" method="post" class="flex justify-end ml-96">
+          {{ csrfField() }}
+          <button type="submit"
+            class="bg-[#14532d] border border-[#14532d] hover:bg-[#052e16] hover:border-white px-4 py-2 rounded-full text-white font-semibold text-sm">Logout</button>
+        </form>
+      </div>
+
+      @else
+
+      <div class="flex order-2 justify-end space-x-4">
+        <a href="{{route('account.index')}}"
+          class="text-white rounded-full hover:border-[#14532d] px-4 py-2 border hover:text-[#14532d] hover:bg-white text-sm font-semibold">LOGIN</a>
+        <a href="{{route('account.create')}}"
+          class=" bg-[#14532d] border border-[#14532d] hover:bg-[#052e16] hover:border-white px-4 py-2 rounded-full text-white font-semibold text-sm">SIGN
+          UP</a>
+      </div>
+
+      @endif
+
+    </div>
+  </nav>
+</header>
